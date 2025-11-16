@@ -1,21 +1,27 @@
+// Body/auth.js
 
 let currentUser = null;
 
-//Chhecks if email is a valid twu email, and is in system bank
-exp
-rt function validateEmail(email) {
-  return email;
+// Simple TWU email pattern: anything@something.twu.edu
+const twuPattern = /^[^@\s]+@([a-zA-Z0-9-]+\.)*twu\.edu$/;
+
+// Check if email is a valid TWU email
+export function validateEmail(email) {
+  if (!email) return false;
+  return twuPattern.test(email);
 }
 
-//Updating the status of the user
+// Save logged-in user info
 export function setUser(user) {
   currentUser = user;
 }
 
+// Get current user
 export function getUser() {
   return currentUser;
 }
 
+// Clear current user
 export function clearUser() {
   currentUser = null;
 }
